@@ -1,3 +1,6 @@
+# set build output directory
+set(BUILD_OUTPUT_DIR ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${PROJECT_NAME})
+
 # Excecutable Target[ *.elf | *.axf | *.exe | *.out ]
 add_executable( ${PROJECT_NAME} ${SRCS})
 
@@ -15,3 +18,13 @@ target_link_directories(    ${PROJECT_NAME} PRIVATE     ${LDPATH})
 
 # Add Taget Link Directory Of Library
 target_link_libraries(      ${PROJECT_NAME} PRIVATE     ${LIBS})
+
+# Generate Map File | Add Clean Rule
+target_link_options(        ${PROJECT_NAME} PRIVATE     -Wl,-Map=${BUILD_OUTPUT_DIR}/${PROJECT_NAME}.map)
+set_directory_properties(PROPERTIES ADDITIONAL_MAKE_CLEAN_FILES ${BUILD_OUTPUT_DIR}/${PROJECT_NAME}.map)
+
+# Set Build Output Directory
+set_target_properties(      
+    ${PROJECT_NAME} PROPERTIES 
+    RUNTIME_OUTPUT_DIRECTORY ${BUILD_OUTPUT_DIR}
+)

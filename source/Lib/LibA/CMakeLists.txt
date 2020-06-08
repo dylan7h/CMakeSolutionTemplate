@@ -3,17 +3,16 @@ cmake_minimum_required(VERSION 3.15)
 
 project(
     # Project Name
-    CLI
+    LibA
     # Version <Major>.<Minor>.<Patch>.<Tweak>
     VERSION         0.0.0.1
     # Project Description
     DESCRIPTION     ""
+    # Author Hompage URL
+    HOMEPAGE_URL    ""
     # Project Language
     LANGUAGES       CXX
 )
-
-# Enable Win32 Executable
-set(WIN32_EXEC OFF)
 
 # Project Compile Defines
 set(DEFINES
@@ -25,17 +24,6 @@ set(CFLAGS
     ${COMMON_CFLAGS}
 )
 
-# Library Paths
-set(LDPATH
-
-)
-
-# Library Files
-set(LIBS
-    LibA
-    LibB
-)
-
 # Compile Include Paths
 set(INCS
     ${CMAKE_CURRENT_SOURCE_DIR}/Inc
@@ -43,8 +31,8 @@ set(INCS
 
 # Compile Source Files
 set(SRCS
-    Src/main.cpp
+    Src/LibA.cpp
 )
 
-# Include Application Temaplate
-include(${CLI_APP_TEMPLATE})
+# Include Library Temaplate
+include(${STATIC_LIB_TEMPLATE})

@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.15)
 
 project(
     # Project Name
-    Win32
+    WIN32
     # Version <Major>.<Minor>.<Patch>.<Tweak>
     VERSION         0.0.0.1
     # Project Description
@@ -32,7 +32,8 @@ set(LDPATH
 
 # Library Files
 set(LIBS
-
+    LibA
+    LibB
 )
 
 # Compile Include Paths
@@ -46,4 +47,4 @@ set(SRCS
 )
 
 # Include Application Temaplate
-include(${CLI_APP_TEMPLATE})
+include(${WIN32_APP_TEMPLATE})

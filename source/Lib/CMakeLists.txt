@@ -3,5 +3,5 @@ set(SHARED_LIB_TEMPLATE ${CMAKE_HOME_DIRECTORY}/CMakeTools/Template/Lib/Shared.c
 set(STATIC_LIB_TEMPLATE ${CMAKE_HOME_DIRECTORY}/CMakeTools/Template/Lib/Static.cmake)
 
 # Library Projects
-add_subdirectory(stdLib)
-add_subdirectory(Vector)
+add_subdirectory(LibA)
+add_subdirectory(LibB)

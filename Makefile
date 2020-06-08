@@ -1,3 +1,6 @@
+# Select Build Type( Debug | Release )
+BUILD_TYPE := Debug
+
 # Generator( "Unix Makefiles" | ... )
 GENERATOR := "Unix Makefiles"
 
@@ -12,7 +15,7 @@ all: config build
 
 # Generate CMake Build System
 config:
-	cmake -B$(BUILD_DIR) -H$(HOME_DIR) -G $(GENERATOR)
+	cmake -B$(BUILD_DIR) -H$(HOME_DIR) -G $(GENERATOR) -DCMAKE_BUILD_TYPE=$(BUILD_TYPE)
 .PHONY : config
 
 # Remove CMake Build System

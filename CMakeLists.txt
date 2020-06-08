@@ -10,6 +10,9 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 # Change ToolChain
 set(CMAKE_TOOLCHAIN_FILE "CMakeTools/ToolChain/clang-mingw32.cmake")
 
+# Change Default Build Options
+set(CMAKE_USER_MAKE_RULES_OVERRIDE "CMakeTools/DefaultBuildOption/x86_64.cmake")
+
 project(
     # Project Name
     Solution
