@@ -4,14 +4,11 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "CMake Configure",
+            "label": "CMake - Configuration",
             "type": "shell",
-            "command": "cmake",
+            "command": "make",
             "args": [
-                "-G",
-                "\"${config:Generator}\"",
-                "-B${config:BuildDir}",
-                "-H."
+                "config"
             ],
             "group": {
                 "kind": "build",
@@ -23,13 +20,11 @@
             }
         },
         {
-            "label": "CMake Remove Configure",
+            "label": "CMake - Remove Configuration",
             "type": "shell",
-            "command": "cmake",
+            "command": "make",
             "args": [
-                "-E",
-                "remove_directory",
-                "${config:BuildDir}"
+                "remove"
             ],
             "group": {
                 "kind": "build",
@@ -41,12 +36,24 @@
             }
         },
         {
-            "label": "CMake Build",
+            "label": "CMake - Configuration & Build",
             "type": "shell",
-            "command": "cmake",
+            "command": "make",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": {
+                "base": "$gcc",
+                "fileLocation": "absolute"
+            }
+        },
+        {
+            "label": "CMake - Build",
+            "type": "shell",
+            "command": "make",
             "args": [
-                "--build",
-                "${config:BuildDir}"
+                "build"
             ],
             "group": {
                 "kind": "build",
@@ -58,13 +65,11 @@
             }
         },
         {
-            "label": "CMake Clean Rebuild",
+            "label": "CMake - Clean & Build",
             "type": "shell",
-            "command": "cmake",
+            "command": "make",
             "args": [
-                "--build",
-                "${config:BuildDir}",
-                "--clean-first"
+                "rebuild"
             ],
             "group": {
                 "kind": "build",
@@ -76,13 +81,10 @@
             }
         },
         {
-            "label": "CMake Clean",
+            "label": "CMake - Clean",
             "type": "shell",
-            "command": "cmake",
+            "command": "make",
             "args": [
-                "--build",
-                "${config:BuildDir}",
-                "--target",
                 "clean"
             ],
             "group": {
