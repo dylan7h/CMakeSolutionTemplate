@@ -20,8 +20,10 @@ target_link_directories(    ${PROJECT_NAME} PRIVATE     ${LDPATH})
 target_link_libraries(      ${PROJECT_NAME} PRIVATE     ${LIBS})
 
 # Generate Map File | Add Clean Rule
-target_link_options(        ${PROJECT_NAME} PRIVATE     -Wl,-Map=${BUILD_OUTPUT_DIR}/${PROJECT_NAME}.map)
-set_directory_properties(PROPERTIES ADDITIONAL_MAKE_CLEAN_FILES ${BUILD_OUTPUT_DIR}/${PROJECT_NAME}.map)
+if(NOT ${CMAKE_GENERATOR} MATCHES "^Visual\ Studio")
+    target_link_options(        ${PROJECT_NAME} PRIVATE     -Wl,-Map=${BUILD_OUTPUT_DIR}/${PROJECT_NAME}.map)
+    set_directory_properties(PROPERTIES ADDITIONAL_MAKE_CLEAN_FILES ${BUILD_OUTPUT_DIR}/${PROJECT_NAME}.map)
+endif()
 
 # Set Build Output Directory
 set_target_properties(      
